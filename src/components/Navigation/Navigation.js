@@ -1,23 +1,23 @@
 import React from 'react';
 
-const Navigation = ({onChange, isSignIn}) => {
+const Navigation = ({newPath, isSignIn}) => {
     return (isSignIn
         ?
             <nav style= {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p
-                    onClick ={() => onChange('signout')} 
+                    onClick ={() => newPath('signout')} 
                     className = 'f3 link dim black underline pa3 pointer'>Sign Out
                 </p>
             </nav>
         :
             <nav style= {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p
-                    onClick ={() => onChange('signin')} 
+                    onClick ={() => newPath('signin')} 
                     className = 'f3 link dim black underline pa3 pointer'>Sign In
                 </p>
 
                 <p
-                    onClick ={() => onChange('register')} 
+                    onClick ={() => newPath('register')} 
                     className = 'f3 link dim black underline pa3 pointer'>Register
                 </p>
             </nav>
