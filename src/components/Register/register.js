@@ -43,6 +43,7 @@ class Register extends React.Component {
     
     
     render(){
+        const {newPath} = this.props;
         return (
         <article className="br3 shadow-5 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
             <main className="pa4 black-80">
@@ -87,6 +88,12 @@ class Register extends React.Component {
                             type="submit" 
                             value="Register"
                         />
+                        <div className="lh-copy mt3">
+                        <p 
+                            onClick= {() => newPath('signin')}
+                            className="f6 link dim black db pointer">Back
+                        </p>
+                    </div>
                     </div>
                 </div>
             </main>

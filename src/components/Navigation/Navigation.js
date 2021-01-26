@@ -6,19 +6,15 @@ const Navigation = ({newPath, isSignIn}) => {
             <nav style= {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p
                     onClick ={() => newPath('signout')} 
-                    className = 'f3 link dim black underline pa3 pointer'>Sign Out
+                    className = 'br3 shadow-5 ba b--black-10 mv4 w-100 w-100-m w-25-l mw5 pv3 f3 mr3 pointer'>Sign Out
                 </p>
             </nav>
         :
             <nav style= {{display: 'flex', justifyContent: 'flex-end'}}>
                 <p
-                    onClick ={() => newPath('signin')} 
-                    className = 'f3 link dim black underline pa3 pointer'>Sign In
-                </p>
-
-                <p
-                    onClick ={() => newPath('register')} 
-                    className = 'f3 link dim black underline pa3 pointer'>Register
+                    onClick ={() => newPath('home')} 
+                    className = 'br3 shadow-5 ba b--black-10 mv4 w-100 w-100-m w-25-l mw5 pv3 f3 mr3 pointer'>
+                    Sign-in<br></br>(without registration)
                 </p>
             </nav>
     )

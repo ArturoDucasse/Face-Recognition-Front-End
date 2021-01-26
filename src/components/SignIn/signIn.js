@@ -10,14 +10,19 @@ class SignIn extends React.Component{
     }
 
     onEmailChange = (event) => {
+        let error = document.getElementById("error");
         this.setState({signInEmail: event.target.value})
+        error.textContent = "";
     }
 
     onPasswrodChange = (event) => {
+        let error = document.getElementById("error");
         this.setState({signInPassword: event.target.value})
+        error.textContent = "";
     }
 
     onSubmitSignIn = () =>{
+        let error = document.getElementById("error");
         fetch('http://localhost:3000/signin', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -32,6 +37,27 @@ class SignIn extends React.Component{
                 this.props.loadUser(user);
                 this.props.newPath('home');
             }
+            else{
+                error.textContent = "Please enter a valid number";
+                error.style.color = "red";
+            }
+        })
+    }
+
+    componentDidMount(){
+        let inputs = document.getElementsByName("input");
+        inputs.forEach(function(elem) 
+        {
+            elem.addEventListener("keyup", function(event) 
+            {
+                if (event.code === "Enter") 
+                {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("inputSubmit").click();
+                }
+            })
         })
     }
 
@@ -49,7 +75,7 @@ class SignIn extends React.Component{
                             <input 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                                 type="email"
-                                name="email-address"  
+                                name="input"  
                                 id="email-address"
                                 onChange = {this.onEmailChange}
                             />
@@ -59,18 +85,20 @@ class SignIn extends React.Component{
                             <input 
                                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                 type="password" 
-                                name="password"  
+                                name="input"  
                                 id="password"
                                 onChange = {this.onPasswrodChange}
                              />
                         </div>
                     </fieldset>
+                    <span id="error"></span> 
                     <div className="">
                         <input
                             onClick = {this.onSubmitSignIn} 
                             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                             type="submit" 
                             value="Sign in"
+                            id = "inputSubmit"
                         />
                     </div>
                     <div className="lh-copy mt3">
