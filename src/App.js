@@ -8,48 +8,13 @@ import FaceRecognition from './components/FaceRecognition/faceRecognition.js';
 import SignIn from './components/SignIn/signIn.js';
 import Particles from 'react-particles-js';
 import Register from './components/Register/register';
-
-
-const particlesOptions =
-      {
-  "particles": {
-    "number": {
-      "value": 200,
-      "density": {
-        "enable": true,
-        "value_area": 1000
-      }
-    }
-  },
-  "interactivity": {
-    "detect_on": "window",
-    "events": {
-      "onhover": {
-        "enable": true,
-        "mode": "grab"
-      },
-      "onclick": {
-        "enable": true,
-        "mode": "repulse"
-      }}}};
+import particlesOptions from './components/particlesLayout'
+import appState from './components/appState';
 
 class App extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      input: '',
-      imageUrl: '',
-      box: {}, 
-      route: 'signin',
-      isSignIn: false,
-      user: {
-        id: '',
-        name: '',
-        email: '',
-        entries: 0,
-        joined: ''
-      }
-    }
+    this.state = appState
   }
 
   loadUser = (newUser) => {
@@ -95,18 +60,17 @@ class App extends Component {
       })})
       .then(response =>{
         response.json().then(data =>{
-          this.setState(Object.assign(this.state.user, {entries: data.entries})) 
-          this.displayFaceBox(this.calculateFaceLocation(data.imageBox))
+            if(data.imageBox){
+              this.setState(Object.assign(this.state.user, {entries: data.entries}))
+              this.displayFaceBox(this.calculateFaceLocation(data.imageBox))
+            }
         })})
       .catch(err => console.log("Api not working",err));
   }
 
     onRouteChange = (route) => {
       this.setState({route: route});
-      if (route === 'signout') {
-        this.setState({isSignIn: false});
-        this.setState({route: 'signin'})
-      }
+      if (route === 'signout') this.setState(appState);
       else if(route === 'home') this.setState({isSignIn: true});
     }
     

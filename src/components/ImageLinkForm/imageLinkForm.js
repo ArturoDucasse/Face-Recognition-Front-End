@@ -5,7 +5,8 @@ const ImageLinkForm = ({onInputChange, onButtonSubmit}) => {
     return (
         <div>
             <p className='f3'>
-                {'This magic tool will detect faces in your pictures, give it a try!'}
+                This magic tool will detect a face in your pictures, give it a try!
+                <br></br> If there are multiple faces, it will only detect one!
             </p>
             <div className='center'>
                 <div className='center form pa4 br3 shadow-2'>

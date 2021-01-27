@@ -38,9 +38,25 @@ class SignIn extends React.Component{
                 this.props.newPath('home');
             }
             else{
-                error.textContent = "Please enter a valid number";
+                error.textContent = "Please enter a valid user";
                 error.style.color = "red";
             }
+        })
+    }
+
+    testerSignIn = () =>{
+        fetch('http://localhost:3000/signin', {
+            method: 'post',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                email: "xxxxx",
+                password: "xxxxx"
+            })
+        })
+        .then(response => response.json())
+        .then(user=>{
+                this.props.loadUser(user);
+                this.props.newPath('home');
         })
     }
 
@@ -66,14 +82,14 @@ class SignIn extends React.Component{
         const {newPath} = this.props;
         return (
         <article className="br3 shadow-5 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 center">
-            <main className="pa4 black-80">
+            <main className="pa4 black-80 ">
                 <div className="measure">
                     <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
-                        <legend className="f1 fw6 ph0 mh0">Sign In</legend>
+                        <legend className="f1 fw6 ph0 mh0 ">Sign In</legend>
                         <div className="mt3">
                             <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
                             <input 
-                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
+                                className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100 " 
                                 type="email"
                                 name="input"  
                                 id="email-address"
@@ -90,8 +106,8 @@ class SignIn extends React.Component{
                                 onChange = {this.onPasswrodChange}
                              />
                         </div>
+                        <span id="error"></span> 
                     </fieldset>
-                    <span id="error"></span> 
                     <div className="">
                         <input
                             onClick = {this.onSubmitSignIn} 

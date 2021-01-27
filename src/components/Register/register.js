@@ -22,6 +22,7 @@ class Register extends React.Component {
     }
 
     onSubmitRegister = () =>{
+        const error = document.getElementById("error");
         fetch('http://localhost:3000/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
@@ -33,14 +34,34 @@ class Register extends React.Component {
         })
         .then(response => response.json())
         .then(user=>{
-            if(user){
+            if(user.name || user.password || user.email){
                 this.props.loadUser(user);
                 this.props.newPath('home');
             }
+            else{
+                error.textContent = "Please fill all ";
+                error.style.color = "red";
+            }
+        }).catch(err=> console.log('Error submiting', err))
+    }
+
+     componentDidMount(){
+        let inputs = document.getElementsByName("input");
+        inputs.forEach(function(elem) 
+        {
+            elem.addEventListener("keyup", function(event) 
+            {
+                if (event.code === "Enter") 
+                {
+                    // Cancel the default action, if needed
+                    event.preventDefault();
+                    // Trigger the button element with a click
+                    document.getElementById("registerSubmit").click();
+                }
+            })
         })
     }
 
-    
     
     render(){
         const {newPath} = this.props;
@@ -55,7 +76,7 @@ class Register extends React.Component {
                             <input 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                 type="text"
-                                name="user-name" 
+                                name="input" 
                                 id="user-name"
                                 onChange={this.onNameChange}
                             />
@@ -65,7 +86,7 @@ class Register extends React.Component {
                             <input 
                                 className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100" 
                                 type="email"
-                                name="email-address"  
+                                name="input"  
                                 id="email-address"
                                 onChange={this.onEmailChange}
                             />
@@ -75,17 +96,19 @@ class Register extends React.Component {
                             <input 
                                 className="b pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
                                 type="password" 
-                                name="password"
+                                name="input"
                                 id="password"
                                 onChange={this.onPasswrodChange}
                             />
                         </div>
+                    <span id="error"></span> 
                     </fieldset>
                     <div>
                         <input
                             onClick = {this.onSubmitRegister} 
                             className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" 
                             type="submit" 
+                            id = "registerSubmit"
                             value="Register"
                         />
                         <div className="lh-copy mt3">
