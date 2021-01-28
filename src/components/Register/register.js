@@ -23,7 +23,8 @@ class Register extends React.Component {
 
     onSubmitRegister = () =>{
         const error = document.getElementById("error");
-        fetch('http://localhost:3000/register', {
+        console.log(this.state.registerEmail, this.state.registerPassword, this.state.registerName)
+        fetch('https://secret-island-60464.herokuapp.com/register', {
             method: 'post',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
@@ -34,7 +35,7 @@ class Register extends React.Component {
         })
         .then(response => response.json())
         .then(user=>{
-            if(user.name || user.password || user.email){
+            if(user.name && user.password && user.email){
                 this.props.loadUser(user);
                 this.props.newPath('home');
             }
