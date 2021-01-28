@@ -23,27 +23,29 @@ class Register extends React.Component {
 
     onSubmitRegister = () =>{
         const error = document.getElementById("error");
-        console.log(this.state.registerEmail, this.state.registerPassword, this.state.registerName)
-        fetch('https://secret-island-60464.herokuapp.com/register', {
-            method: 'post',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                email: this.state.registerEmail,
-                password: this.state.registerPassword,
-                name: this.state.registerName
+        const {registerEmail, registerPassword, registerName} = this.state;
+
+         if(registerEmail && registerPassword && registerName){
+            fetch('https://secret-island-60464.herokuapp.com/register', {
+                method: 'post',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    email: registerEmail,
+                    password: registerPassword,
+                    name: registerName
+                })
             })
-        })
-        .then(response => response.json())
-        .then(user=>{
-            if(user.name && user.password && user.email){
-                this.props.loadUser(user);
-                this.props.newPath('home');
-            }
-            else{
-                error.textContent = "Please fill all ";
-                error.style.color = "red";
-            }
-        }).catch(err=> console.log('Error submiting', err))
+            .then(response => response.json())
+            .then(user=>{
+                    this.props.loadUser(user);
+                    this.props.newPath('home');
+                }
+        ).catch(err=> console.log('Error submiting', err))}
+        else
+        {
+            error.textContent = "Please fill all parameteres";
+            error.style.color = "red";
+        }
     }
 
      componentDidMount(){
