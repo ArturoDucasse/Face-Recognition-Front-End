@@ -1,0 +1,8 @@
+{
+  "name": "Face Recognition",
+  "description": "This web application recognize the face in the picture",
+  "icons": [{
+    "src": "images/icon.png",
+    "sizes": "192x192"
+  }]
+}
