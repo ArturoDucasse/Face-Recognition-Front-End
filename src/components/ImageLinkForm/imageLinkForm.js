@@ -4,7 +4,7 @@ import "./imageLinkForm.css";
 /**
  * Handles the display, and input of information in main page
  * @param {String} onInputChange
- * @param {Object} onButtonSubmit
+ * @param {function} onButtonSubmit
  * @returns
  */
 const ImageLinkForm = ({ onInputChange, onButtonSubmit }) => {
