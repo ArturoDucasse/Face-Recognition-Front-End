@@ -1,5 +1,5 @@
 /**
- * App data state information
+ * App data state parameters
  */
 const appState = {
   input: "",

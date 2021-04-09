@@ -1,5 +1,5 @@
 /**
- * Options for the particles layout
+ * Parameters for the particles layout
  */
 const particlesLayout = {
   particles: {

@@ -1,15 +1,18 @@
 import React, { Component } from "react";
-import "./App.css";
-import Navigation from "./components/Navigation/Navigation.js";
-import Logo from "./components/Logo/logo.js";
-import ImageLinkForm from "./components/ImageLinkForm/imageLinkForm.js";
-import Rank from "./components/Rank/rank.js";
-import FaceRecognition from "./components/FaceRecognition/faceRecognition.js";
-import SignIn from "./components/SignIn/signIn.js";
 import Particles from "react-particles-js";
-import Register from "./components/Register/register";
-import particlesOptions from "./components/particlesLayout";
-import appState from "./components/appState";
+
+import "./App.css";
+import {
+  Navigation,
+  Logo,
+  ImageLinkForm,
+  Rank,
+  FaceRecognition,
+  SignIn,
+  Register,
+} from "./components";
+import particlesOptions from "./utils/particlesLayout";
+import appState from "./utils/appState";
 
 class App extends Component {
   constructor(props) {
