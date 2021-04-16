@@ -67,6 +67,10 @@ $ npm test
 # Create build
 $ npm run build
 ```
+
+**Note**:
+Make sure to start back-end, repo: https://github.com/R2rit0/Face-Recognition-Back-End 
+
 ---
 
 ## Technologies used 🛠️
