@@ -78,6 +78,7 @@ Make sure to start back-end, repo: https://github.com/R2rit0/Face-Recognition-Ba
 - [React](https://es.reactjs.org/) - Front-End JavaScript library.
 - [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 - [Tachyons](https://tachyons.io/) - CSS extension language.
+- [Github Pages](https://pages.github.com/) - A static site hosting service that takes files straight from a repository on GitHub.
 
 
 ## Acknowledgments 🎁
