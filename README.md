@@ -27,7 +27,6 @@ git@2.17.1 or higher
 ```
 
 ## Dependencies 🗃️
-- clarifai
 - react
 - react-dom
 - react-particles-js
@@ -36,6 +35,7 @@ git@2.17.1 or higher
 - react-tilt
 - tachyons
 - web-vitals
+- jest
 
 ## How To Use 🔧
 
@@ -76,7 +76,6 @@ Make sure to start back-end, repo: https://github.com/R2rit0/Face-Recognition-Ba
 ## Technologies used 🛠️
 
 - [React](https://es.reactjs.org/) - Front-End JavaScript library.
-- [Clarifai](https://www.clarifai.com/) - Artificial intelligence company that specializes in computer vision.
 - [Jest](https://jestjs.io/) - Jest is a delightful JavaScript Testing Framework with a focus on simplicity.
 - [Tachyons](https://tachyons.io/) - CSS extension language.
 
