@@ -5,3 +5,4 @@ export { default as Navigation } from "./Navigation/Navigation";
 export { default as Rank } from "./Rank/rank";
 export { default as Register } from "./Register/register";
 export { default as SignIn } from "./SignIn/signIn";
+export { default as Container } from "./Container/container";

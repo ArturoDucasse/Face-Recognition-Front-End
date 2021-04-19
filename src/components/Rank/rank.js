@@ -7,13 +7,6 @@ import React from "react";
  * @returns
  */
 const Rank = ({ userName, userEntries }) => {
-  return (
-    <div>
-      <div className="white f3">
-        {`${userName}, your current entries are...`}
-      </div>
-      <div className="white f1">{`${userEntries}`}</div>
-    </div>
-  );
+  return <div className="black f3">{`${userName}  # ${userEntries}`}</div>;
 };
 export default Rank;

@@ -4,7 +4,7 @@
 const appState = {
   input: "",
   imageUrl: "",
-  box: {},
+  box: [],
   route: "signin",
   isSignIn: false,
   user: {

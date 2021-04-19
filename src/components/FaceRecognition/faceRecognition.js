@@ -2,31 +2,30 @@ import React from "react";
 import "./faceRecognition.css";
 
 /**
- * Display the borders of the image passed
+ * Display the image and, draw squares at the faces location
  * @param {String} imageUrl
- * @param {Object} box
+ * @param {Array} box
  * @returns
  */
 const faceRecognition = ({ imageUrl, box }) => {
   return (
-    <div className="center ma">
-      <div className="absolute mt2">
-        <img
-          id="inputimage"
-          alt=""
-          src={imageUrl}
-          width="500px"
-          height="auto"
-        />
-        <div
-          className="bounding-box"
-          style={{
-            top: box.topRow,
-            right: box.rightCol,
-            bottom: box.bottomRow,
-            left: box.leftCol,
-          }}
-        ></div>
+    <div style={{ position: "relative" }}>
+      <div className="absolute">
+        <img id="inputimage" alt="Face" src={imageUrl} />
+        {box.map((imageBox, i) => {
+          return (
+            <div
+              key={i}
+              className="bounding-box"
+              style={{
+                top: imageBox.topRow,
+                right: imageBox.rightCol,
+                bottom: imageBox.bottomRow,
+                left: imageBox.leftCol,
+              }}
+            ></div>
+          );
+        })}
       </div>
     </div>
   );

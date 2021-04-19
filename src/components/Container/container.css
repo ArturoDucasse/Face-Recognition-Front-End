@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+}
+
+.inputSide {
+  margin-right: 10px;
+}
+
+.imageSide {
+  width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+}

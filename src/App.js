@@ -2,17 +2,10 @@ import React, { Component } from "react";
 import Particles from "react-particles-js";
 
 import "./App.css";
-import {
-  Navigation,
-  Logo,
-  ImageLinkForm,
-  Rank,
-  FaceRecognition,
-  SignIn,
-  Register,
-} from "./components";
+import { Navigation, Logo, Container, SignIn, Register } from "./components";
 import particlesOptions from "./utils/particlesLayout";
 import appState from "./utils/appState";
+import calculateFaceLocation from "./utils/calculateFaceLocation";
 
 class App extends Component {
   constructor(props) {
@@ -32,21 +25,10 @@ class App extends Component {
     });
   };
 
-  calculateFaceLocation = (data) => {
-    const clarifaiFace = data;
-    const image = document.getElementById("inputimage");
-    const width = Number(image.width);
-    const height = Number(image.height);
-    return {
-      leftCol: clarifaiFace.left_col * width,
-      topRow: clarifaiFace.top_row * height,
-      rightCol: width - clarifaiFace.right_col * width,
-      bottomRow: height - clarifaiFace.bottom_row * height,
-    };
-  };
-
   displayFaceBox = (box) => {
-    this.setState({ box: box });
+    let temp = this.state.box;
+    temp.push(box);
+    this.setState({ box: temp });
   };
 
   onInputChange = (input) => {
@@ -65,11 +47,14 @@ class App extends Component {
     })
       .then((response) => {
         response.json().then((data) => {
-          if (data.imageBox) {
+          if (data.imageBox.regions[0].region_info.bounding_box) {
             this.setState(
               Object.assign(this.state.user, { entries: data.entries })
             );
-            this.displayFaceBox(this.calculateFaceLocation(data.imageBox));
+            const imageBoxArray = data.imageBox.regions;
+            imageBoxArray.map(({ region_info: { bounding_box } }) =>
+              this.displayFaceBox(calculateFaceLocation(bounding_box))
+            );
           }
         });
       })
@@ -92,15 +77,14 @@ class App extends Component {
         {route === "home" ? (
           <div>
             <Logo />
-            <Rank
+            <Container
               userName={this.state.user.name}
               userEntries={this.state.user.entries}
-            />
-            <ImageLinkForm
               onInputChange={onInputChange}
               onButtonSubmit={onButtonSubmit}
+              box={box}
+              imageUrl={imageUrl}
             />
-            <FaceRecognition box={box} imageUrl={imageUrl} />
           </div>
         ) : route === "signin" ? (
           <SignIn loadUser={this.loadUser} newPath={onRouteChange} />

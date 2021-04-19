@@ -9,6 +9,7 @@ class SignIn extends React.Component {
     this.state = {
       signInEmail: "",
       signInPassword: "",
+      loading: false,
     };
   }
 
@@ -25,6 +26,7 @@ class SignIn extends React.Component {
   };
 
   onSubmitSignIn = () => {
+    this.setState({ loading: true });
     let error = document.getElementById("error");
     fetch("https://secret-island-60464.herokuapp.com/signin", {
       method: "post",
@@ -43,7 +45,9 @@ class SignIn extends React.Component {
           error.textContent = "Please enter a valid user";
           error.style.color = "red";
         }
-      });
+        this.setState({ loading: false });
+      })
+      .catch((err) => console.log(err));
   };
 
   testerSignIn = () => {
@@ -108,6 +112,7 @@ class SignIn extends React.Component {
                   onChange={this.onPasswrodChange}
                 />
               </div>
+              {this.loading && <span>Loading...</span>}
               <span id="error"></span>
             </fieldset>
             <div className="">
