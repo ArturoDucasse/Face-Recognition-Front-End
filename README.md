@@ -1,7 +1,7 @@
 # Face-Recognition-Front-End
 
 <h2 align="center">
-  <img src="https://github.com/R2rit0/Face-Recognition-Front-End/blob/36a97946b44fba79c2ee527ac2c7a6d7418098ee/public/Face-Recognition%20Capture.png" alt="Face-Recognition" width="600px" />
+  <img src="https://github.com/R2rit0/Face-Recognition-Front-End/blob/563c4616032f013e7120ad78cd11fa8ef3bfc3f2/public/Screenshot%202021-04-19%20090155.png" alt="Face-Recognition" width="600px" />
   <br>
 </h2>
 
