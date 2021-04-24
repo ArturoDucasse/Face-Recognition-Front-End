@@ -6,7 +6,7 @@
 </h2>
 
 ## Description 📄
-Website project that enables users to detect faces position on images they submit, and ranks them accordingly to their number of submits.
+This website detects faces in pictures, pictures that are submited by the users. As guell take in accountant the number of photos submited by the users. In this project react was used, and its attibute to create projects by separating it by components. As well tachyons for fast, and easy development of the website style.
 
 ## Features
 ⚡️ Register users\
