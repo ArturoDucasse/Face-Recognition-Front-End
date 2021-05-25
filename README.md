@@ -39,7 +39,7 @@ git@2.17.1 or higher
 
 ## How To Use 🔧
 
-From your command line, first clone netflix-clone:
+From your command line, first clone Face-Recognition:
 
 ```bash
 # Clone this repository
